@@ -20,10 +20,10 @@ defined('COT_CODE') or die('Wrong URL');
 if ($usr['id']) {
  	$db_users = Cot::$db->users;
 
- 	($usr['profile']['user_truevisits_since'] == 0) && $tv['user_truevisits_since'] = $sys['now_offset'];
-	$tv['user_truevisits_last'] = $sys['now_offset'];
+ 	($usr['profile']['user_truevisits_since'] == 0) && $tv['user_truevisits_since'] = $sys['now'];
+	$tv['user_truevisits_last'] = $sys['now'];
 
-	if (($sys['now_offset'] - Cot::$cfg['plugin']['truevisits']['duration']) > $usr['profile']['user_truevisits_last']) {
+	if (($sys['now'] - Cot::$cfg['plugin']['truevisits']['duration']) > $usr['profile']['user_truevisits_last']) {
 		$tv['user_truevisits_count'] = ++$usr['profile']['user_truevisits_count'];
 	}
 
